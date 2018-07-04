@@ -1,0 +1,48 @@
+
+/* Start Menu Part */
+
+.close-btn{
+    -fx-background-color: #FC5653;
+    -fx-background-radius: 100%;
+}
+.close-btn:hover{
+    -fx-background-color: red;
+    -fx-background-radius: 100%;
+    -fx-cursor: hand
+}
+
+.min-btn{
+    -fx-background-color: #29CC41;
+    -fx-background-radius: 100%;
+}
+.min-btn:hover{
+    -fx-background-color: green;
+    -fx-background-radius: 100%;
+    -fx-cursor: hand
+}
+
+/* End Menu Part */
+
+JFXButton {
+    -fx-text-fill: #FFF;
+    -fx-font-size: 22px;
+    -fx-pref-width: 65px;
+    -fx-pref-height: 65px;
+}
+
+JFXButton:hover {
+    -fx-cursor: hand
+}
+
+.btn-normal {
+    -fx-background-color: #AAA;
+    -fx-text-fill: #000
+}
+
+.btn-equation {
+    -fx-background-color: f78531
+}
+
+.lbl {
+    -fx-font-size: 45px
+}

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="424.0" prefWidth="263.0" stylesheets="@calc.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.calculatorfx.CalcController">
+   <children>
+      <Pane fx:id="parent" prefHeight="34.0" prefWidth="263.0" style="-fx-background-color: #DDD;">
+         <children>
+            <Label layoutX="14.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#close" prefHeight="13.0" prefWidth="13.0" styleClass="close-btn">
+            </Label>
+            <Label layoutX="38.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#minimize" prefHeight="13.0" prefWidth="13.0" styleClass="min-btn">
+            </Label>
+            <Label layoutX="103.0" layoutY="9.0" text="Calculator">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <GridPane hgap="1.0" prefHeight="390.0" prefWidth="263.0" vgap="1.0">
+        <columnConstraints>
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="65.0" prefWidth="65.0" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="65.0" prefWidth="65.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="65.0" prefWidth="65.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="65.0" prefWidth="65.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="-Infinity" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="65.0" prefHeight="60.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="-Infinity" minHeight="65.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="65.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="65.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="65.0" prefHeight="60.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXButton onAction="#btn9" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <JFXButton onAction="#btnAC" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="AC" GridPane.rowIndex="1" />
+            <JFXButton onAction="#btnMul" prefHeight="70.0" prefWidth="70.0" styleClass="btn-equation" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <JFXButton onAction="#btnDiv" prefHeight="70.0" prefWidth="70.0" styleClass="btn-equation" text="/" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <JFXButton onAction="#btnPositive" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="+/-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <JFXButton onAction="#btnSub" prefHeight="70.0" prefWidth="70.0" styleClass="btn-equation" text="-" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <JFXButton onAction="#btnEqual" prefHeight="70.0" prefWidth="70.0" styleClass="btn-equation" text="=" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <JFXButton onAction="#btnAdd" prefHeight="70.0" prefWidth="70.0" styleClass="btn-equation" text="+" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <JFXButton onAction="#btn5" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="5" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <JFXButton onAction="#btn7" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="7" GridPane.rowIndex="2" />
+            <JFXButton onAction="#btn8" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <JFXButton onAction="#btn3" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="3" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <JFXButton onAction="#btn6" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="6" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <JFXButton onAction="#btnPoint" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="." GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <JFXButton onAction="#btn2" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXButton onAction="#btn4" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="4" GridPane.rowIndex="3" />
+            <JFXButton onAction="#btn0" prefHeight="70.0" prefWidth="131.0" style="-fx-pref-width: 131px;" styleClass="btn-normal" text="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+            <JFXButton onAction="#btn1" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="1" GridPane.rowIndex="4" />
+            <JFXButton onAction="#btnMod" prefHeight="70.0" prefWidth="70.0" styleClass="btn-normal" text="\%" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Label fx:id="lblResult" alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="65.0" prefWidth="263.0" styleClass="lbl" text="0" textAlignment="RIGHT" GridPane.columnSpan="4">
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </GridPane>
+   </children>
+</VBox>
