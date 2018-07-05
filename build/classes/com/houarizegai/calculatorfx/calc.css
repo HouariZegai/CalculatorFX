@@ -1,4 +1,3 @@
-
 /* Start Menu Part */
 
 .close-btn{
@@ -43,6 +42,10 @@ JFXButton:hover {
     -fx-background-color: f78531
 }
 
-.lbl {
+.lblExpression {
     -fx-font-size: 45px
+}
+
+.lblHistory {
+    -fx-font-size: 22px
 }

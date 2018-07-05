@@ -1,9 +1,12 @@
-
 package com.houarizegai.calculatorfx;
 
+import com.houarizegai.calculatorfx.calculatorengine.CalculatorEngine;
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.EventHandler;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -16,35 +19,31 @@ public class CalcController implements Initializable {
 
     @FXML
     private Pane parent;
-    
+
     private double xOffset = 0;
     private double yOffset = 0;
-    
+
     @FXML
-    private Label lblResult;
+    private Label lblExpression, lblHistoryExpression;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         makeStageDrageable();
-    }    
-    
+    }
+
     private void makeStageDrageable() {
-        parent.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
+        parent.setOnMousePressed(e -> {
+            xOffset = e.getSceneX();
+            yOffset = e.getSceneY();
         });
-        parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Launch.stage.setX(event.getScreenX() - xOffset);
-                Launch.stage.setY(event.getScreenY() - yOffset);
-                Launch.stage.setOpacity(0.7f);
-            }
+
+        parent.setOnMouseDragged(e -> {
+            Launch.stage.setX(e.getScreenX() - xOffset);
+            Launch.stage.setY(e.getScreenY() - yOffset);
+            Launch.stage.setOpacity(0.7f);
         });
-        parent.setOnDragDone((e) -> {
+
+        parent.setOnDragDone(e -> {
             Launch.stage.setOpacity(1.0f);
         });
         parent.setOnMouseReleased((e) -> {
@@ -65,108 +64,72 @@ public class CalcController implements Initializable {
     }
 
     /* Start Button Action */
-    
     @FXML
-    private void btnPoint() {
-        if(lblResult.getText().length() < 10) {
-            if(!lblResult.getText().contains("."))
-                lblResult.setText(lblResult.getText() + ".");
+    private void numberClicked(ActionEvent e) {
+        String number = ((JFXButton) e.getSource()).getText();
+
+        if (lblExpression.getText().length() == 1 && lblExpression.getText().equals("0")) {
+            lblExpression.setText(number);
+            return;
+        }
+
+        if (lblExpression.getText().length() < 10) {
+            lblExpression.setText(lblExpression.getText() + number);
         }
     }
+
     @FXML
-    private void btn0() {
-        if(lblResult.getText().length() < 10)
-            lblResult.setText(lblResult.getText() + "0");
+    private void btnPoint() {
+        if (lblExpression.getText().length() < 9) {
+            String lastTxt = ""; // This string contains last txt after operator
+            for(int i = lblExpression.getText().length() - 1; i >= 0; i--) {
+                if("+-*/".contains(lblExpression.getText().substring(i, i + 1))) {
+                    break;
+                } else {
+                   lastTxt = lblExpression.getText().substring(i, i + 1) + lastTxt;
+                }
+            }
+            
+            if(lastTxt.length() == 0)
+                lblExpression.setText(lblExpression.getText() + "0.");
+            else if(!lastTxt.contains("."))
+                lblExpression.setText(lblExpression.getText() + ".");
+            
+        }
     }
+
     @FXML
-    private void btn1() {
-        if(lblResult.getText().length() < 10)
-            lblResult.setText(lblResult.getText() + "1");
+    private void operationClicked(ActionEvent e) {
+        if (lblExpression.getText().length() < 9) {
+            
+            String opt = ((JFXButton) e.getSource()).getText();
+            if (lblExpression.getText().matches(".*[0-9]")) {
+                lblExpression.setText(lblExpression.getText() + opt);
+            }
+        }
+
     }
-    @FXML
-    private void btn2() {
-        if(lblResult.getText().length() < 10)
-            lblResult.setText(lblResult.getText() + "2");
-        
-    }
-    @FXML
-    private void btn3() {
-        if(lblResult.getText().length() < 10)
-            lblResult.setText(lblResult.getText() + "3");
-        
-    }
-    @FXML
-    private void btn4() {
-        if(lblResult.getText().length() < 10)
-            lblResult.setText(lblResult.getText() + "4");
-        
-    }
-    @FXML
-    private void btn5() {
-        if(lblResult.getText().length() < 10)
-            lblResult.setText(lblResult.getText() + "5");
-        
-    }
-    @FXML
-    private void btn6() {
-        if(lblResult.getText().length() < 10)
-            lblResult.setText(lblResult.getText() + "6");
-        
-    }
-    @FXML
-    private void btn7() {
-        if(lblResult.getText().length() < 10)
-            lblResult.setText(lblResult.getText() + "7");
-        
-    }
-    @FXML
-    private void btn8() {
-        if(lblResult.getText().length() < 10)
-            lblResult.setText(lblResult.getText() + "8");
-        
-    }
-    @FXML
-    private void btn9() {
-        if(lblResult.getText().length() < 10)
-            lblResult.setText(lblResult.getText() + "9");
-        
-    }
-    
-    @FXML
-    private void btnDiv() {
-        
-    }
-    @FXML
-    private void btnMul() {
-        
-    }
-    @FXML
-    private void btnSub() {
-        
-    }
-    @FXML
-    private void btnAdd() {
-        
-    }
+
     @FXML
     private void btnEqual() {
-        
+        lblHistoryExpression.setText(lblExpression.getText() + " =");
+        lblExpression.setText(CalculatorEngine.getCalc(lblExpression.getText()));
     }
-    
+
     @FXML
     private void btnAC() {
-        lblResult.setText("0");
+        lblExpression.setText("0");
+        lblHistoryExpression.setText("");
     }
+
     @FXML
-    private void btnPositive() {
-        if(lblResult.getText().charAt(0) != '-')
-            lblResult.setText("-" + lblResult.getText());
+    private void btnBack() {
+        if (lblExpression.getText().length() == 1) {
+            lblExpression.setText("0");
+        } else {
+            lblExpression.setText(lblExpression.getText().substring(0, lblExpression.getText().length() - 1));
+        }
     }
-    @FXML
-    private void btnMod() {
-        
-    }
-    
+
     /* End Button Action */
-    
 }
