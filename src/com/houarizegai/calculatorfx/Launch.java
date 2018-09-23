@@ -34,9 +34,5 @@ public class Launch extends Application {
         Launch.stage = stage;
         stage.show();
     }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
     
 }
