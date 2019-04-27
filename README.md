@@ -1,21 +1,15 @@
-# CalculatorFx
-## Preview:
-<ul>
-  <li>
-    <h3>Screenshot of calculator :</h3>
-    <img src="https://github.com/HouariZegai/CalculatorFx/blob/master/screenshot/calculator.PNG">
-  </li>
-</ul>
+# CalculatorFX 📱
+Calculator UI made it using JavaFX.
 
-## Used Library:
-<ul>
-  <li><a href="https://github.com/jfoenixadmin/JFoenix" target="_blank">JFoenix</a></li>  
-</ul>
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+## Screenshot
+![calculator img](screenshot/calculator.PNG)
 
-## Follow me:
-<ul>
-  <li><a href="https://www.facebook.com/GeekHouari" target="_blank">Facebook</a><br /></li>
-	<li><a href="https://www.twitter.com/HouariZegai" target="_blank">Twitter</a><br /></li>
-	<li><a href="https://www.youtube.com/HouariZegai">Youtube</a></li>
-</ul>
+## Used library
+* JFoenix.
+
+## Follow me
+<a href="https://www.facebook.com/ZegaiBlog">Facebook</a> | <a href="https://www.youtube.com/HouariZegai">Youtube</a> | <a href="https://www.twitter.com/HouariZegai">Twitter</a> | <a href="https://www.instagram.com/HouariZegai">Instagram</a>
+
+.سبحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لا إِلهَ إِلأَ انْتَ أَسْتَغْفِرُكَ وَأَتْوبُ إِلَيْكَ
